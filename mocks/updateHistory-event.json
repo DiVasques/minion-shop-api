@@ -1,0 +1,8 @@
+{
+	"body": "{\"cart\":[{\"productId\":\"004\",\"quantity\":5},{\"productId\":\"002\",\"quantity\":7}]}",
+	"requestContext": {
+		"identity": {
+			"cognitoIdentityId": "cognitoUuid"
+		}
+	}
+}

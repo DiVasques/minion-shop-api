@@ -1,0 +1,8 @@
+{
+	"body": "{\"name\":\"diogo vasques\",\"email\":\"s@s.com\",\"cart\":[{\"productId\":\"004\",\"quantity\":5},{\"productId\":\"002\",\"quantity\":7}]}",
+	"requestContext": {
+		"identity": {
+			"cognitoIdentityId": "cognitoUuid2"
+		}
+	}
+}
