@@ -37,13 +37,6 @@ provider:
 
 
 functions:
-  hello:
-    handler: handler.hello
-    events:
-      - http:
-          path: hello
-          method: get
-  
   create:
     handler: create.main
     events:
@@ -66,7 +59,7 @@ functions:
     handler: getHistory.main
     events:
       - http:
-          path: shopUsers/{id}
+          path: shopUsers/{id}/history
           method: get
           cors: true
           authorizer: aws_iam
@@ -75,7 +68,7 @@ functions:
     handler: getCart.main
     events:
       - http:
-          path: shopUsers/{id}
+          path: shopUsers/{id}/cart
           method: get
           cors: true
           authorizer: aws_iam
@@ -84,7 +77,7 @@ functions:
     handler: getEmail.main
     events:
       - http:
-          path: shopUsers/{id}
+          path: shopUsers/{id}/email
           method: get
           cors: true
           authorizer: aws_iam
@@ -93,7 +86,7 @@ functions:
     handler: updateHistory.main
     events:
       - http:
-          path: shopUsers/{id}
+          path: shopUsers/{id}/history
           method: put
           cors: true
           authorizer: aws_iam
@@ -102,7 +95,7 @@ functions:
     handler: dumpCart.main
     events:
       - http:
-          path: shopUsers/{id}
+          path: shopUsers/{id}/cart
           method: put
           cors: true
           authorizer: aws_iam
@@ -111,7 +104,7 @@ functions:
     handler: addOnCart.main
     events:
       - http:
-          path: shopUsers/{id}
+          path: shopUsers/{id}/add
           method: put
           cors: true
           authorizer: aws_iam
@@ -120,7 +113,7 @@ functions:
     handler: updateCart.main
     events:
       - http:
-          path: shopUsers/{id}
+          path: shopUsers/{id}/update
           method: put
           cors: true
           authorizer: aws_iam
@@ -129,7 +122,7 @@ functions:
     handler: removeCartItem.main
     events:
       - http:
-          path: shopUsers/{id}
+          path: shopUsers/{id}/remove
           method: put
           cors: true
           authorizer: aws_iam
@@ -142,3 +135,8 @@ functions:
           method: put
           cors: true
           authorizer: aws_iam
+          
+# Create our resources with separate CloudFormation templates
+resources:
+  # API Gateway Errors
+  - ${file(resources/api-gateway-errors.yml)}

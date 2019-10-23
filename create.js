@@ -19,7 +19,7 @@ export async function main(event, context) {
 			userId: event.requestContext.identity.cognitoIdentityId,
 			name: data.name,
 			email: data.email,
-			cart: data.cart,
+			cart: [],
 			history: []
 		}
 	};
