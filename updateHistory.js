@@ -4,12 +4,13 @@ import uuid from "uuid";
 import * as getCart from "./getCart";
 
 export async function main(event, context) {
-	const cartInfo = await getCart.main(event,context);
+	const getInfo = await getCart.main(event,context);
+	const cartInfo = JSON.parse(getInfo.body);
 
 	const	Purchase = {
 		purchaseId: uuid.v1(),
 		date: Date.now(),
-		itens: cartInfo.bodyJson.cart
+		itens: cartInfo.cart
 	};
 	const params = {
 		TableName: process.env.tableName,

@@ -2,7 +2,7 @@
 	"body": "{\"productId\":\"003\",\"quantity\":7}",
 	"requestContext": {
 		"identity": {
-			"cognitoIdentityId": "cognitoUuid"
+			"cognitoIdentityId": "cognitoUuid2"
 		}
 	}
 }

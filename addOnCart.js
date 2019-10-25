@@ -3,7 +3,8 @@ import { success, failure } from "./libs/response-lib";
 import * as getCart from "./getCart";
 
 export async function main(event, context) {
-	const cartInfo = await getCart.main(event,context);
+	const getInfo = await getCart.main(event,context);
+	const cartInfo = JSON.parse(getInfo.body);
 	const data = JSON.parse(event.body);
 	const Item = {
 		productId: data.productId,
@@ -14,7 +15,7 @@ export async function main(event, context) {
 	}
 
 	try {
-			const index = cartInfo.bodyJson.cart.findIndex(findId);
+			const index = cartInfo.cart.findIndex(findId);
 
 			if (index == -1) {
 
@@ -36,13 +37,13 @@ export async function main(event, context) {
 					await dynamoDbLib.call("update", params);
 					return success({ status: true });
 				} catch (e) {
-					return failure({ status: false, error1: e });
+					return failure({ status: false});
 				}
 			}
 			else {
 				const UpdatedItem = {
 					productId: data.productId,
-					quantity: data.quantity + cartInfo.bodyJson.cart[index].quantity
+					quantity: data.quantity + cartInfo.cart[index].quantity
 				};
 				const params = {
 					TableName: process.env.tableName,
@@ -59,7 +60,7 @@ export async function main(event, context) {
 					await dynamoDbLib.call("update", params);
 					return success({ status: true });
 				} catch (e) {
-					return failure({ status: false, error12: e,idnes:index });
+					return failure({ status: false});
 				}
 			}
 	} catch (e) {
