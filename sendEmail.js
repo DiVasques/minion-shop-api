@@ -14,6 +14,7 @@ export async function main(event, context) {
 		Destination: { /* required */
 			CcAddresses: [
 			'goediow@gmail.com',
+			'ariel@lawcheck.com.br',
 			/* more items */
 			],
 			ToAddresses: [
